@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'CustomActivityRingiOS_Example' do
+  pod 'CustomActivityRingiOS', :path => '../'
+
+  target 'CustomActivityRingiOS_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
