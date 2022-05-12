@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CustomActivityRingiOS
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var viewRing: ProgressRing!
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewRing.trackGradientColor = [UIColor.red.cgColor, UIColor.blue.cgColor]
+        viewRing.setProgress(to: 0.7, withAnimation: true)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
