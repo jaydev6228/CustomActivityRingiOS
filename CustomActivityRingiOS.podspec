@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CustomActivityRingiOS'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'Library to use with some custome functionCustomActivityRingiOS.'
 
 # This description is used to generate tags and improve search results.
@@ -38,6 +38,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'APIWrapper_V2'
+  s.dependency 'My-Coacapods'
 end
  
