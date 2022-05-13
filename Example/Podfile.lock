@@ -1,0 +1,16 @@
+PODS:
+  - CustomActivityRingiOS (0.1.0)
+
+DEPENDENCIES:
+  - CustomActivityRingiOS (from `../`)
+
+EXTERNAL SOURCES:
+  CustomActivityRingiOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CustomActivityRingiOS: 1b1c43c0914d27e69ca8eea07af2e27dbbe3e254
+
+PODFILE CHECKSUM: 3635c17b0e115d8dc0fb52f25bc2c3c38bdda7ad
+
+COCOAPODS: 1.11.2
