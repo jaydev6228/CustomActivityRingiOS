@@ -1,0 +1,6 @@
+framework module CustomActivityRingiOS {
+  umbrella header "CustomActivityRingiOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
