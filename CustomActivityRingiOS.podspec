@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'CustomActivityRingiOS/Classes/**/*'
 
-  s.dependecy 'Alamofire'
+  s.dependency 'Alamofire'
   
   # s.resource_bundles = {
   #   'CustomActivityRingiOS' => ['CustomActivityRingiOS/Assets/*.png']
