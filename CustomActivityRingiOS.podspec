@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CustomActivityRingiOS'
-  s.version          = '0.1.8'
+  s.version          = '0.1.9'
   s.summary          = 'Library to use with some custome functionCustomActivityRingiOS.'
 
 # This description is used to generate tags and improve search results.
@@ -31,6 +31,8 @@ Pod::Spec.new do |s|
   s.swift_version = "4.0"
 
   s.source_files = 'CustomActivityRingiOS/Classes/**/*'
+
+  S.dependecy 'Alamofire'
   
   # s.resource_bundles = {
   #   'CustomActivityRingiOS' => ['CustomActivityRingiOS/Assets/*.png']
@@ -38,12 +40,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  
-
-   s.subspec 'My-Coacapods' do |mycoacapod|
-    mycoacapod.source_files  = "My-extensions/My-extensions/**/*.{h,m,swift}"
-    mycoacapod.dependency 'My-Coacapods'
-  end
 
 
 end 
