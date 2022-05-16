@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CustomActivityRingiOS'
-  s.version          = '0.2.9'
+  s.version          = '0.3.0'
   s.summary          = 'Library to use with some custome functionCustomActivityRingiOS.'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'CustomActivityRingiOS/Classes/**/*'
 
-  s.dependency 'ActivityRingLib'
+  s.dependency 'ActivityRingLib', '~> 0.0.1'
   
   # s.resource_bundles = {
   #   'CustomActivityRingiOS' => ['CustomActivityRingiOS/Assets/*.png']
