@@ -66,7 +66,7 @@ public class ProgressRing: UIView {
         fillLayer.strokeColor = UIColor.gray.cgColor
         fillLayer.fillColor = UIColor.clear.cgColor
         fillLayer.strokeEnd = 0
-        fillLayer.lineCap = "round"
+        fillLayer.lineCap = .round
         self.layer.addSublayer(fillLayer)
         drawGradientLayer()
     }
