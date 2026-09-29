@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CustomActivityRingiOS'
-  s.version          = '0.3.1'
+  s.version          = '0.3.2'
   s.summary          = 'Library to use with some custom function.'
 
 # This description is used to generate tags and improve search results.
@@ -32,8 +32,10 @@ Pod::Spec.new do |s|
 
   s.source_files = 'CustomActivityRingiOS/Classes/**/*'
 
-  s.dependency 'ActivityRingLib', '~> 0.0.1'
-  
+  # NOTE: do not re-add a dependency on ActivityRingLib. Its source repo
+  # (github.com/jaydev6228/ActivityRingLib) is private, so `pod install`
+  # fails for anyone without access to it. Nothing in Classes/ imports it.
+
   # s.resource_bundles = {
   #   'CustomActivityRingiOS' => ['CustomActivityRingiOS/Assets/*.png']
   # }
