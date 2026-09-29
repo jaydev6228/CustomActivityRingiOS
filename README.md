@@ -14,7 +14,7 @@ track, line width and animated progress. User can set custom activity ring color
 > CocoaPods spec index, so `pod 'CustomActivityRingiOS'` will fail to resolve.
 > Install from git (see [Installation](#installation)) until a release is pushed
 > to trunk. The lint failures that were blocking publication are fixed as of
-> `0.3.2` — see [Publishing to CocoaPods](#publishing-to-cocoapods).
+> `0.3.3` — see [Publishing to CocoaPods](#publishing-to-cocoapods).
 
 ## Example
 
@@ -22,7 +22,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- iOS 12.0+ (as declared in the podspec)
+- iOS 15.0+ (as declared in the podspec)
 - Swift 5.0 (as declared in the podspec)
 - CocoaPods
 - No third-party dependencies (UIKit only)
@@ -33,7 +33,7 @@ Because the pod is not on CocoaPods trunk, point CocoaPods at this repository
 directly and pin a tag:
 
 ```ruby
-pod 'CustomActivityRingiOS', :git => 'https://github.com/jaydev6228/CustomActivityRingiOS.git', :tag => '0.3.2'
+pod 'CustomActivityRingiOS', :git => 'https://github.com/jaydev6228/CustomActivityRingiOS.git', :tag => '0.3.3'
 ```
 
 Once a version is published to trunk, the usual line will work instead:
@@ -58,16 +58,22 @@ ring.setProgress(to: 0.75, withAnimation: true)
 
 ## Publishing to CocoaPods
 
-`pod trunk push` has never succeeded for this pod. The three lint failures that
-were blocking it are now fixed in `0.3.2`:
+`pod trunk push` has never succeeded for this pod. `pod trunk push` runs
+`pod lib lint` first and refuses to publish if it fails. These are the failures
+that were blocking it, all fixed as of `0.3.3`:
 
 - `fillLayer.lineCap` was assigned a `String` literal. Since Swift 4.2 that
   property is typed `CAShapeLayerLineCap`, so it no longer compiled. Now `.round`.
 - `s.swift_version` was `"4.0"`. Xcode 14 and later dropped the Swift 4 language
   modes, so the lint build could not use it. Now `"5.0"`.
-- `s.ios.deployment_target` was `'9.0'`, below the minimum current Xcode
-  supports; it got raised with a warning, and `pod lib lint` treats warnings as
-  errors. Now `'12.0'`.
+- The podspec depended on `ActivityRingLib`, whose source repo
+  `github.com/jaydev6228/ActivityRingLib` is **private**, so lint could not
+  clone it — and neither could any user of the published pod. Nothing in
+  `Classes/` imported it, so it was removed. Do not re-add it unless that
+  repository is made public.
+- `s.ios.deployment_target` was `'9.0'`, then briefly `'12.0'`. Current Xcode
+  accepts a deployment target in the range 15.0–27.1 and errors below it, so
+  the value is now `'15.0'`. `Example/Podfile` uses the same floor.
 
 Publishing requires macOS with Xcode — the lint compiles for the iOS simulator.
 From a Mac:
@@ -76,17 +82,10 @@ From a Mac:
 # one-time, if not already registered
 pod trunk register jaydevbaloliya@gmail.com 'jaydev6228'
 
-git tag 0.3.2 && git push origin 0.3.2   # s.source pins :tag => s.version
+git tag 0.3.3 && git push origin 0.3.3   # s.source pins :tag => s.version
 pod lib lint CustomActivityRingiOS.podspec
 pod trunk push CustomActivityRingiOS.podspec
 ```
-
-A fourth blocker turned up on the first real lint run: the podspec depended on
-`ActivityRingLib`, whose source repo `github.com/jaydev6228/ActivityRingLib` is
-**private**. Lint failed cloning it, and the same failure would have hit every
-user of the published pod — a pod on trunk can only depend on publicly
-resolvable sources. Nothing in `Classes/` imported it, so the dependency was
-removed in `0.3.2`. Do not re-add it unless that repo is made public.
 
 ## Continuous integration
 
